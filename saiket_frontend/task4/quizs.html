@@ -1,0 +1,133 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Application</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: #ffffff;
+        }
+        .quiz-container {
+            max-width: 500px;
+            background: rgb(207, 232, 239);
+            margin: 50px auto;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+        .question {
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+        .options label {
+            display: block;
+            margin: 15px 10px;
+            cursor: pointer;
+        }
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            cursor: pointer;
+            margin-top: 15px;
+            border-radius: 5px;
+        }
+        button:hover {
+            background: #08a642;
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <h2>Simple Quiz</h2>
+        <div id="quiz"></div>
+        <button id="nextBtn">Next</button>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        const quizData = [
+            {
+                question: "What is the largest ocean on Earth?",
+                options: ["Atlantic Ocean", "Indian Ocean", "Pacific Ocean", "Arctic Ocean"],
+                answer: "Pacific Ocean"
+            },
+            {
+                question: `Who is the author of "Pride and Prejudice"?`,
+                options: ["Jane Austen", "Charles Dickens", "Leo Tolstoy", "Emily Bronte"],
+                answer: "Jane Austen"
+            },
+            {
+                question: "What is 5 + 16?",
+                options: ["5", "21", "10", "15"],
+                answer: "21"
+            },
+            {
+                question: "Who painted the Mona Lisa?",
+                options: ["Leonardo da Vinci", "Michelangelo", "Raphael", "Rembrandt"],
+                answer: "Leonardo da Vinci"
+            },
+            {
+                question: "What is the chemical symbol for gold?",
+                options: ["Ag", "Fe", "Au", "Cu"],
+                answer: "Au"
+            }
+        ];
+
+        let currentQuestionIndex = 0;
+        let score = 0;
+        const quizContainer = document.getElementById("quiz");
+        const nextBtn = document.getElementById("nextBtn");
+        const resultContainer = document.getElementById("result");
+
+        function loadQuestion() {
+            const currentQuestion = quizData[currentQuestionIndex];
+            quizContainer.innerHTML = `
+                <div class="question">${currentQuestion.question}</div>
+                <div class="options">
+                    ${currentQuestion.options.map(option => `
+                        <label>
+                            <input type="radio" name="option" value="${option}"> ${option}
+                        </label>
+                    `).join('')}
+                </div>
+            `;
+        }
+
+        function getSelectedOption() {
+            const options = document.querySelectorAll("input[name='option']");
+            for (let option of options) {
+                if (option.checked) return option.value.trim();
+            }
+            return null;
+        }
+
+        nextBtn.addEventListener("click", () => {
+            const selectedOption = getSelectedOption();
+            if (!selectedOption) {
+                alert("Please select an answer!");
+                return;
+            }
+
+            if (selectedOption === quizData[currentQuestionIndex].answer) {
+                score++;
+            }
+
+            currentQuestionIndex++;
+            if (currentQuestionIndex < quizData.length) {
+                loadQuestion();
+            } else {
+                quizContainer.innerHTML = `<h3>Quiz Completed!</h3>`;
+                nextBtn.style.display = "none";
+                resultContainer.innerHTML = `<strong>You scored ${score} out of ${quizData.length}!</strong>`;
+            }
+        });
+
+        loadQuestion();
+    </script>
+</body>
+</html>

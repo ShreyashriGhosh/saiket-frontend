@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: #f4f4f4;
+        }
+        .todo-container {
+            max-width: 500px;
+            background: rgb(255, 236, 196);
+            margin: 50px auto;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        input {
+            width: 70%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background: #ff9d00;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background: #007bff;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            background: #eee;
+            margin: 5px 0;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            border-radius: 5px;
+        }
+        .completed {
+            text-decoration: line-through;
+            color: rgb(139, 138, 138);
+        }
+    </style>
+</head>
+<body>
+    <div class="todo-container">
+        <h2>To-Do List</h2>
+        <input type="text" id="taskInput" placeholder="Add a new task...">
+        <button onclick="addTask()">Add</button>
+        <ul id="taskList"></ul>
+    </div>
+
+    <script>
+        function addTask() {
+            const taskInput = document.getElementById("taskInput");
+            const taskText = taskInput.value.trim();
+            if (taskText === "") {
+                alert("Please enter a task!");
+                return;
+            }
+            
+            const taskList = document.getElementById("taskList");
+            const li = document.createElement("li");
+            li.innerHTML = `${taskText} 
+                <button onclick="editTask(this)">Edit</button>
+                <button onclick="toggleTask(this)">Done</button>
+                <button onclick="removeTask(this)">Delete</button>`;
+            taskList.appendChild(li);
+            taskInput.value = "";
+        }
+        
+        function editTask(button) {
+            const task = button.parentElement;
+            const newText = prompt("Edit your task:", task.firstChild.textContent.trim());
+            if (newText !== null && newText.trim() !== "") {
+                task.firstChild.textContent = newText;
+            }
+        }
+        
+        function toggleTask(button) {
+            const task = button.parentElement;
+            task.classList.toggle("completed");
+        }
+        
+        function removeTask(button) {
+            const task = button.parentElement;
+            task.remove();
+        }
+    </script>
+</body>
+</html>

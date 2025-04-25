@@ -1,0 +1,223 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>L'Oréal - Official Product Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f8f9fa;
+            text-align: center;
+        }
+        header {
+            background: #d32f2f;
+            color: white;
+            padding: 20px;
+        }
+
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items:center;
+            width: 100%;
+            background: #b71c1c;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 90px;
+        }
+
+        .nav-links li {
+            margin: 0 15px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #ffe4e4;
+        }
+
+ 
+
+        .container {
+            max-width: 1500px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        .video-section {
+            margin-top: 30px;
+        }
+        .video-section iframe {
+            width: 80%;
+            max-width: 600px;
+            height: 350px;
+            border-radius: 10px;
+        }
+
+        .product {
+            display: flex;
+            /* flex-wrap: wrap; */
+            justify-content: space-around;
+            margin-top: 30px;
+        }
+        .product-info{
+            
+            background: white;
+            padding: 20px;
+            margin: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            width: 30%;
+        }
+
+        .product-info img {
+            width: 100px;
+            height: 200px;
+            border-radius: 10px;
+            margin: 10px;
+        }
+ 
+        .product-info h2 {
+            color: #d32f2f;
+        }
+        .product-info p {
+            color: #5e5c5c;
+            font-size: 16px;
+        }
+        .buy-button {
+            background: #e40303;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .buy-button:hover {
+            background: #b71c1c;
+        }
+
+        .contact-form {
+            margin-top: 30px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            margin: auto;
+        }
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .contact-form button {
+            background: #d32f2f;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        footer {
+            background: #490202;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            margin-top: 20px;
+        }
+        @media (max-width: 768px) {
+            .product {
+                flex-direction: column;
+                align-items: center;
+            }
+            .product-info {
+                width: 80%;
+                margin-bottom: 15px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to L'Oréal Paris</h1>
+    </header>
+    <nav>
+        <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Products</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+
+        <div class="video-section">
+            <h2>Watch Our Product in Action</h2>
+
+
+            <iframe width="600" height="315" src="https://www.youtube.com/embed/jgyJSoLBCQI?si=rInfTHNG10Pn0_18" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+
+        <div class="product">
+
+            <div class="product-info">
+                <img src="dream length.webp" alt="L'Oréal Shampoo">
+                <h2>Dream Length</h2>
+                <p>Dream Lenghts Restoring Shampoo.</p>
+                <button class="buy-button" onclick="addToCart()">Buy Now</button>
+            </div>
+
+            <div class="product-info">
+                <img src="Hyaluron Moisture.webp" alt="L'Oréal Shampoo">
+                <h2>Hyaluron Moisture</h2>
+                <p>HYALURON MOISTURE 72H MOISTURE SEALING CONDITIONER.</p>
+                <button class="buy-button" onclick="addToCart()">Buy Now</button>
+            </div>
+
+            <div class="product-info">
+                <img src="6oil shampoo.webp" alt="L'Oréal Shampoo">
+                <h2>6-Oil Nourish</h2>
+                <p> 6 OIL NOURISH SHAMPOO.</p>
+                <button class="buy-button" onclick="addToCart()">Buy Now</button>
+            </div>
+        </div>
+
+
+        <div class="contact-form">
+            <h2>Contact Us</h2>
+            <input type="text" placeholder="Your Name" >
+            <input type="email" placeholder="Your Email" >
+            <textarea placeholder="Your Message" ></textarea>
+            <button onclick="submitForm()">Send Message</button>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2025 L'Oréal paris . All rights reserved.</p>
+    </footer>
+
+    <script>
+        function addToCart() {
+            alert('Added to Cart!');
+        }
+        function submitForm() {
+            alert('Your message has been sent!');
+        }
+    </script>
+</body>
+</html>

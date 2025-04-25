@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tourist Place</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            display: grid;
+            grid-template-areas: 
+                "header header"
+                "sidebar main" 
+                "footer footer"; 
+            grid-template-columns: 250px 1fr; 
+            grid-template-rows: auto 1fr auto auto;
+            min-height: 00vh;
+            background: #f4f4f4;
+        }
+
+        header {
+            grid-area: header;
+            background: linear-gradient(135deg, #ff009d, #00d4ff);
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            font-size: 18px;
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-links li {
+            margin: 0 15px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #000000;
+        }
+
+        .search-box {
+            display: flex;
+        }
+
+        .search-box input {
+            padding: 8px;
+            border: none;
+            border-radius: 5px 0 0 5px;
+        }
+
+        .search-box button {
+            padding: 8px 12px;
+            background: black;
+            color: white;;
+            font-weight: bold;
+            border: none;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .search-box button:hover {
+            background: #0033ff;
+        }
+
+        aside {
+            
+            grid-area: sidebar;
+            background: #b3dbea;
+            color: #3f3a3a;
+            padding: 35px;
+            line-height: 28px;
+        }
+        aside h2{
+            color: #0062ea;
+        }
+
+        main {
+            grid-area: main;
+            padding: 20px;
+            background: #fff;
+            
+        }
+        main h2{
+            margin: 20px 20px;
+            color: #202020;
+        }
+        main p{
+            margin: 20px 20px;
+            color: #585555;
+            line-height: 28px;
+            font-weight: 500;
+        }
+
+        .image-gallery {
+            display:flex;
+            overflow-x: auto;
+            gap: 25px;
+            padding: 15px 0px;
+            scrollbar-width: thin;
+            scrollbar-color: #007bff #ddd;
+        }
+
+        .image-gallery img {
+            width: 250px;
+            height: 180px;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .image-gallery img:hover {
+            transform: scale(1.1);
+        }
+
+
+        footer {
+            grid-area: footer;
+            background: #202020;
+            color: white;
+            text-align: center;
+            padding: 15px;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                display: flex;
+                flex-direction: column;
+            }
+            aside {
+                order: -1;
+            }
+            nav {
+                flex-direction: column;
+                text-align: center;
+            }
+            .search-box {
+                margin-top: 10px;
+            }
+            .image-gallery img {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <h1>Tourist Place</h1>
+            <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Destinations</a></li>
+                <li><a href="#">Gallery</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+            <div class="search-box">
+                <input type="text" placeholder="Search tourist places...">
+                <button>Search</button>
+            </div>
+        </nav>
+    </header>
+
+    <aside>
+        <h2>Popular Places</h2>
+        <ul>
+            <li>Paris, France</li>
+            <li>London, England</li>
+            <li>Dubai, UAE</li>
+            <li>Singapore</li>
+            <li>Bangkok, Thailand</li>
+            <li>New York City, USA</li>
+            <li>Tokyo, Japan</li>
+        </ul>
+    </aside>
+
+    <main>
+        <h2>Explore the Beauty of the World</h2>
+        <p> The places around the globe that draw the most tourists have a lot in common: 
+            They are typically in urban centers and have broad cultural and historical appeal. 
+            Our selection of the top attractions honors local heritage and cultural landmarks at major destinations 
+            that have captured the world's imagination and inspired travelers to circle the globe for architectural marvels 
+            and must-see destinations.
+        <br>
+            In the hustle and bustle of our daily lives, we often forget to pause and appreciate the beauty that surrounds us. 
+            From the mesmerizing landscapes to the diverse cultures, our world is a treasure trove of wonders waiting to be explored. This article takes you on a journey to rediscover the enchanting beauty of our planet.</p>
+            
+        <h2>Image Gallery</h2>
+        <div class="image-gallery">    
+            <img src="paris.jpeg" alt="Paris">
+            <img src="dubai.jpeg" alt="Dubai">
+            <img src="singapore.avif" alt="Singapore">
+            <img src="malaysia.jpg" alt="Malaysia">
+        </div>
+
+        <h2>Paris, France</h2>
+        <p>Paris, the capital of France, is a city of romance and beauty. Paris lives up to its hype: 
+            A city with unbelievable food and culture, plus stunning views everywhere you turn. With 18 arrondissements, it’s a lot to see in one trip, but each neighbourhood has a personality all its own.
+             You can’t miss the iconic 7th, where art and history meet—there’s the Eiffel Tower, sure, but the impressive Musée du quai Branly is just a short walk away.
+
+        <h2>London, United Kingdom</h2>
+        <p>London’s a sprawling city at the centre of everything: art, history, culture—you name it. 
+            But what sets it apart from other major hubs are its distinct neighbourhoods, each with their own vibe. 
+            Spend an afternoon with the fam in Kensington: It’s got museums, parks, and plenty of other kid-approved things to do
+        </p>
+
+        <h2>Dubai, United Arab Emirates</h2>
+        <p>Everything feels extra spectacular in Dubai—from the ultra-modern Burj Khalifa to the souks and malls filled with gold and jewellery vendors.
+            It’s a place where if you can dream it, you can do it: Whether that means skiing indoors, dune-surfing in the desert, or zip-lining above the city. 
+            But it’s not all glitz and adrenaline-pumping action. 
+        </p>
+
+
+    </main>
+    
+
+    <footer>
+        <p>Copyright 2025 © tour and vacation Report</p>
+    </footer>
+</body>
+</html>
